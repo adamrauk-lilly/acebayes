@@ -798,6 +798,8 @@ utilitynlm <- function (formula, prior, desvars, criterion = c("D", "A", "E", "S
         }
         if(identical(dim(prior$sigma2), 2)) {
           qsigma <- prior$sigma
+        } else if(all(dim(prior$sigma2)==no.terms)) {
+          qsigma2 <- prior$sigma2
         } else {
           qsigma2 <- diag(prior$sigma2, nrow = no.terms)
         }
