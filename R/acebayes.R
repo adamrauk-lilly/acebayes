@@ -1035,7 +1035,7 @@ acenlm <- function (formula, start.d, prior, B, criterion = c("D", "A", "E", "SI
                          criterion = criterion, method = method, nrq = B) 
   
  inte <- function(d, B) {
-    d2 <- 0.5 * (d + 1) * diff + lower
+    d2 <- 0.5 * (d + 1) * DIFF + lower
     utilobj$utility(d2, B)
   }
   
@@ -1061,8 +1061,8 @@ acenlm <- function (formula, start.d, prior, B, criterion = c("D", "A", "E", "SI
     }
   }
   
-  diff <- upper - lower
-  start.d2 <- 2 * (start.d - lower)/diff - 1
+  DIFF <- upper - lower
+  start.d2 <- 2 * (start.d - lower)/DIFF - 1
   output <- ace(utility = inte, start.d = start.d2, B = B, 
                  Q = Q, N1 = N1, N2 = N2, lower = -1, upper = 1, progress = progress, 
                  limits = limits2, deterministic = deterministic)
