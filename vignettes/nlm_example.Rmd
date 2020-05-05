@@ -1,0 +1,37 @@
+---
+title: "nlm_example"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{nlm_example}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(acebayes)
+conc=10^seq(4,-1,length=8) #example 1
+ start_design <- matrix(conc,ncol=1) 
+   colnames(start_design)<-"x" 
+   
+   myformula <- ~ D + (A-D)/(1+(x/C)^B)
+   
+  prior <- list(mu=c(A=9.97,B=1.03,C=30.14,D=2),
+                sigma2=matrix(c(0.1195229387, -0.001709292,  -0.148810979, -0.0001389212,
+               -0.0017092924,  0.010497956,   0.066013925,  0.0005015430,
+               -0.1488109791,  0.066013925, 237.767236380,  0.0027018149,
+               -0.0001389212,  0.000501543,   0.002701815,  0.0024945324),ncol=4))
+  
+   min.conc=min(conc) 
+   max.conc=max(conc) 
+   
+ans<-acebayes::acenlm(formula = myformula, start_design, prior = prior,
+                        lower=min.conc,upper=max.conc,N1=20,N2=20)
+
+```
