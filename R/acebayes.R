@@ -1129,7 +1129,7 @@ out}
 
 noisyexpectutil<-function(utility, B, d, i, j, Dij){
 temp<-d
-z<-c()
+z<-numeric(length(Dij)) # Hunter: initialize vector length to avoid copies
 for(L in 1:length(Dij)){
 temp[i,j]<-Dij[L]
 z[L]<-mean(utility(d=temp, B=B))}
