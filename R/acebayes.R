@@ -1277,6 +1277,9 @@ acephase1 <- function (utility, start.d, B, Q = 20, N1 = 20,
         optgp <- FisherScoring2D(par = c(0, 0), Dij = xxx, 
                                  z = zzz, dist = A.array)
         opt <- NULL
+        if(any(is.infinite(exp(optgp$par)))) {
+          optgp$singular <- 1
+        }
         if (optgp$singular != 1) {
           xxxz <- limits2(i = i, j = j, d = DESIGN)
           xxxz2 <- 2 * (xxxz - LOWER[i, j])/DIFF[i, j] - 
