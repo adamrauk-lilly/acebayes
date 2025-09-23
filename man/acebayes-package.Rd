@@ -26,8 +26,8 @@ points.
 \details{
 \tabular{ll}{
 Package: \tab acebayes\cr
-Version: \tab 1.10\cr
-Date: \tab 2020-10-04\cr
+Version: \tab 1.11\cr
+Date: \tab 2025-09-23\cr
 Date: \tab 2017-02-09\cr
 License: \tab GPL-2\cr
 }

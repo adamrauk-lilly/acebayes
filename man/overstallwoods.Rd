@@ -156,39 +156,44 @@ The expected utility function in this case is available in closed form, i.e. it 
 \bold{Compartmental model}
 
 For the example in the Supplementary Material;
+
 \itemize{
-\item{
-The function \code{utilcomp18bad} will return a vector of length \code{B} where each element is the value of the Bayesian D-optimal utility function (i.e. the log determinant of the Fisher information matrix) evaluated at a sample of size \code{B} generated from the prior distribution of the model parameters.}
-\item{
-The function \code{optdescomp18bad} will return an 18 by 1 matrix giving the optimal design (specified by the argument \code{type}). The elements will be scaled to be in the interval [-1, 1], i.e. a -1 corresponds to a sampling times of 0 hours, and 1 corresponds to a time of 24 hours.}}
+\item
+The function \code{utilcomp18bad} will return a vector of length \code{B} where each element is the value of the Bayesian D-optimal utility function (i.e. the log determinant of the Fisher information matrix) evaluated at a sample of size \code{B} generated from the prior distribution of the model parameters.
+\item
+The function \code{optdescomp18bad} will return an 18 by 1 matrix giving the optimal design (specified by the argument \code{type}). The elements will be scaled to be in the interval [-1, 1], i.e. a -1 corresponds to a sampling times of 0 hours, and 1 corresponds to a time of 24 hours.
+}
+
 For the example in Section 3.2;
+
 \itemize{
-\item{
-The function \code{utilcomp15bad} will return a vector of length \code{B} where each element is the value of the Bayesian D-optimal utility function (i.e. the log determinant of the Fisher information matrix) evaluated at a sample of size \code{B} generated from the prior distribution of the model parameters.}
-\item{
-The function \code{optdescomp15bad} will return an 15 by 1 matrix giving the optimal design (found using ACE) under Bayesian D-optimality. The elements will be scaled to be in the interval [-1, 1], i.e. a -1 corresponds to a sampling times of 0 hours, and 1 corresponds to a time of 24 hours.}
-\item{
-The function \code{utilcomp15sig} will return a vector of length \code{B} where each element is the value of the SIG utility function evaluated at a sample of size \code{B} generated from the joint distribution of model parameters and unobserved responses.}
-\item{
-The function \code{optdescomp15sig} will return an 18 by 1 matrix giving the optimal design (found using ACE) under the SIG utility. The elements will be scaled to be in the interval [-1, 1], i.e. a -1 corresponds to a sampling times of 0 hours, and 1 corresponds to a time of 24 hours.}
-\item{
-The function \code{utilcomp15sigDRS} will return a vector of length \code{B} where each element is the value of the SIG utility function (where a DRS has been used) evaluated at a sample of size \code{B} generated from the joint distribution of model parameters and unobserved responses. Here the Beta DRS (see Overstall & Woods, 2017) has been used so \code{d} should be a 2 by 1 matrix containing the positive beta parameters.}
-\item{
-The function \code{optdescomp15sigDRS} will return a 2 by 1 matrix giving the optimal design (found using ACE) under the SIG utility, where a DRS has been used. The elements correspond to the parameters of a beta distribution.}
+\item 
+The function \code{utilcomp15bad} will return a vector of length \code{B} where each element is the value of the Bayesian D-optimal utility function (i.e. the log determinant of the Fisher information matrix) evaluated at a sample of size \code{B} generated from the prior distribution of the model parameters.
+\item
+The function \code{optdescomp15bad} will return an 15 by 1 matrix giving the optimal design (found using ACE) under Bayesian D-optimality. The elements will be scaled to be in the interval [-1, 1], i.e. a -1 corresponds to a sampling times of 0 hours, and 1 corresponds to a time of 24 hours.
+\item
+The function \code{utilcomp15sig} will return a vector of length \code{B} where each element is the value of the SIG utility function evaluated at a sample of size \code{B} generated from the joint distribution of model parameters and unobserved responses.
+\item
+The function \code{optdescomp15sig} will return an 18 by 1 matrix giving the optimal design (found using ACE) under the SIG utility. The elements will be scaled to be in the interval [-1, 1], i.e. a -1 corresponds to a sampling times of 0 hours, and 1 corresponds to a time of 24 hours.
+\item
+The function \code{utilcomp15sigDRS} will return a vector of length \code{B} where each element is the value of the SIG utility function (where a DRS has been used) evaluated at a sample of size \code{B} generated from the joint distribution of model parameters and unobserved responses. Here the Beta DRS (see Overstall & Woods, 2017) has been used so \code{d} should be a 2 by 1 matrix containing the positive beta parameters.
+\item
+The function \code{optdescomp15sigDRS} will return a 2 by 1 matrix giving the optimal design (found using ACE) under the SIG utility, where a DRS has been used. The elements correspond to the parameters of a beta distribution.
 }
 
 \bold{Logistic regression model}
 
 A function whose name includes \code{"lr"} refers to standard logistic regression, whereas \code{"hlr"} refers to hierarchical logistic regression. Under standard logistic regression the possible values for the argument \code{n} can be any even integer between 6 and 48. For hierarchical logistic regression, \code{n} can be any integer divisible by 6 between 12 and 48. The function name also indicates the utility function:
 \itemize{
-\item{\code{"bad"}}{
-Bayesian D-optimal}
-\item{\code{"baa"}}{
-Bayesian A-optimal}
-\item{\code{"sig"}}{
-Shannon information gain}
-\item{\code{"nsel"}}{
-Negative squared error loss}}
+\item 
+\code{"bad"} Bayesian D-optimal
+\item
+\code{"baa"} Bayesian A-optimal
+\item
+\code{"sig"} Shannon information gain
+\item
+\code{"nsel"} Negative squared error loss
+}
 The functions prefixed by \code{"util"} will return a vector of length \code{B} where each element is the utility function evaluated at a sample generated from the prior distribution of model parameters (for Bayesian D- and A-optimality) or the joint distribution of model parameters and unobserved responses (for SIG and NSEL).
 
 The functions prefixed by \code{"optdes"} will return an \code{n} by \code{k = 4} matrix giving the optimal design found by ACE. The designs given by this function are those reported on in Overstall & Woods (2017). The function \code{optdeslrbad} will also return designs (for \code{n = 16, 48}) found by Woods et al (2006) and Gotwalt et al (2009) by specifying the \code{type} argument appropriately.
