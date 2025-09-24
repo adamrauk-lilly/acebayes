@@ -1302,7 +1302,7 @@ acephase1 <- function (utility, start.d, B, Q = 20, N1 = 20,
             the.p.val <- pval(old_eval, new_eval, binary)
             the.p.val <- ifelse(is.na(the.p.val), 0, the.p.val) 
           }
-          if (the.p.val >= runif(1)) { 
+          if (mean(the.p.val) >= runif(1)) { 
             DESIGN <- new_DESIGN
             curr <- c(curr, mean(new_eval))
             if (curr[length(curr)] > inner_eval) {
@@ -1331,7 +1331,7 @@ acephase1 <- function (utility, start.d, B, Q = 20, N1 = 20,
       the.p.val <- pval(old_eval, new_eval, binary)
       the.p.val <- ifelse(is.na(the.p.val), 0, the.p.val)
     }
-    if (the.p.val >= runif(1)) {
+    if (mean(the.p.val) >= runif(1)) {
       best_eval <- mean(new_eval)
       best <- inner
     }
@@ -1413,12 +1413,12 @@ acephase2 <- function (utility, start.d, B, N2 = 100, progress = FALSE, binary =
      the.p.val <- pval(old_eval, new_eval, binary)
      the.p.val <- ifelse(is.na(the.p.val), 0, the.p.val)
    }
-   if (the.p.val > runif(1)) {
+   if (mean(the.p.val) > runif(1)) {
      curr2 <- c(curr2, mean(new_eval))
      DESIGN <- new_DESIGN
      the.p.val <- pval(best_ob, new_eval, binary)
      the.p.val <- ifelse(is.na(the.p.val), 0, the.p.val)
-     if (the.p.val >= runif(1)) {
+     if (mean(the.p.val) >= runif(1)) {
        best <- DESIGN
        best_ob <- new_eval
      }
